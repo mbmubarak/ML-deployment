@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn import model_selection
 from sklearn.linear_model import LogisticRegression
-import joblib # to save the load the model
+import pickle # to save the load the model
 
 url="https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"
 
@@ -28,4 +28,9 @@ print(result)
 #saving the model
 filename = "diabetes_79.pkl" #naming convention daibetes - dataset and 79 - accuracy got
 # this diabetes_79.pkl is encrypted and this is called serialization (serialized data)
-joblib.dump(model, filename)
+pickle.dump(model, open(filename, 'wb')) # wb - becas it is byte file and we need to write so opening write mode
+
+
+#only chnages compared to job lib are:
+#1.import pickle instaed of joblib at the top
+#2.pickle.dump instaed of joblib.dump and second parameter is Open(filename,'wb') need to be passed
